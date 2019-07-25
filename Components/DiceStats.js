@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import {colors, fonts, padding, dimensions} from '../Styles/base';
+import { View, StyleSheet } from 'react-native';
+import {margin, dimensions} from '../Styles/base';
+import {DataTable} from 'react-native-paper';
 
 export default class DiceResult extends Component {
     constructor(props) {
@@ -10,18 +11,52 @@ export default class DiceResult extends Component {
                     threePlus: 0,
                     fourPlus: 0,
                     fivePlus: 0,
-                    sixPlus: 0};
+                    sixPlus: 0
+                 };
 }
 
     render() {
         return(
             <View style={styles.container}>
-                <Text style={styles.listItem}>1+: {this.state.onePlus}</Text>
-                <Text style={styles.listItem}>2+: {this.state.twoPlus}</Text>
-                <Text style={styles.listItem}>3+: {this.state.threePlus}</Text>
-                <Text style={styles.listItem}>4+: {this.state.fourPlus}</Text>
-                <Text style={styles.listItem}>5+: {this.state.fivePlus}</Text>
-                <Text style={styles.listItem}>6+: {this.state.sixPlus}</Text>
+                <DataTable style={styles.dataTable}>
+                    <DataTable.Header>
+                        <DataTable.Title>Statistic</DataTable.Title>
+                        <DataTable.Title>Quantity</DataTable.Title>
+                    </DataTable.Header>
+
+                    <DataTable.Row>
+                        <DataTable.Cell>1+</DataTable.Cell>
+                        <DataTable.Cell>{this.state.onePlus}</DataTable.Cell>
+                    </DataTable.Row>
+                    <DataTable.Row>
+                        <DataTable.Cell>2+</DataTable.Cell>
+                        <DataTable.Cell>{this.state.twoPlus}</DataTable.Cell>
+                    </DataTable.Row>
+                    <DataTable.Row>
+                        <DataTable.Cell>3+</DataTable.Cell>
+                        <DataTable.Cell>{this.state.threePlus}</DataTable.Cell>
+                    </DataTable.Row>
+                </DataTable>
+
+                <DataTable style={styles.dataTable}>
+                    <DataTable.Header>
+                        <DataTable.Title>Statistic</DataTable.Title>
+                        <DataTable.Title>Quantity</DataTable.Title>
+                    </DataTable.Header>
+
+                    <DataTable.Row>
+                        <DataTable.Cell>4+</DataTable.Cell>
+                        <DataTable.Cell>{this.state.fourPlus}</DataTable.Cell>
+                    </DataTable.Row>
+                    <DataTable.Row>
+                        <DataTable.Cell>5+</DataTable.Cell>
+                        <DataTable.Cell>{this.state.fivePlus}</DataTable.Cell>
+                    </DataTable.Row>
+                    <DataTable.Row>
+                        <DataTable.Cell>6+</DataTable.Cell>
+                        <DataTable.Cell>{this.state.sixPlus}</DataTable.Cell>
+                    </DataTable.Row>
+                </DataTable>
             </View>
         );
     }
@@ -29,11 +64,13 @@ export default class DiceResult extends Component {
 
 const styles = StyleSheet.create({
     container: {
-      width: dimensions.fullWidth},
-    
-    listItem: {
-        color: colors.primary,
-        fontSize: fonts.md,
-        paddingLeft: padding.md
+        flexDirection: 'row',
+    },
+
+    dataTable: {
+        backgroundColor:'white',
+        marginLeft: margin.sm,
+        borderRadius: 8,
+        width: dimensions.fullWidth / 2.2
     }
   });
