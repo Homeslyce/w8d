@@ -1,33 +1,41 @@
 import React, { Component } from 'react';
-import { TextInput, TouchableOpacity, Text, Alert, StyleSheet, View } from 'react-native';
-import {colors, fonts, padding, dimensions, margin} from '../Styles/base';
+import { Alert, StyleSheet, View, Keyboard } from 'react-native';
+import {colors, padding, dimensions, margin} from '../Styles/base';
+import { Button, TextInput  } from 'react-native-paper';
 
 export default class MainRoller extends Component {
 
-    constructor(props) { //even if we don't use props, it is recommended to always put it for futur uses
+    constructor(props) { //even if we don't use props, it is recommended to always put it for future uses
         super(props); //call the constructor of its parent class, and puts values in this.props
-        this.state = { style: styles.textinput_unfocused }; //set initial state
+        this.state = { text : ''};//set initial state
     }
 
     _onPressButton() {
         Alert.alert('You tapped the button!');
+        Keyboard.dismiss();
     }
 
     render() {
         return (
             <View style={styles.container}>
                 <TextInput
-                    onFocus={ () => this.setState({ style: styles.textinput_focused }) }
-                    onBlur={ () => this.setState({ style: styles.textinput_unfocused }) } //onBlur is called when ScrollView keyboard.dismiss() is called
-                    underlineColorAndroid="transparent"
-                    style={ [styles.textinput, this.state.style] } 
+                    label="Enter Qty of Dice"
+                    value={this.state.text}
+                    onChangeText={text => this.setState({ text })}
+                    mode="contained"
+                    style={styles.textinput}
+                    theme={{ colors: { primary: colors.primary}}} //change the focus border color
+                    multiline={true}
+                    underlineColor="transparent"
+                    maxLength={9}
+                    keyboardType="numeric"
                 />
-                <TouchableOpacity
-                    style={styles.btn}
+                <Button 
+                    mode="contained" 
                     onPress={this._onPressButton}
-                >
-                    <Text>ROLL'EM</Text>
-                </TouchableOpacity>
+                    style={styles.btn}>
+                    ROLL'EM
+                </Button>
             </View>
         );
     }
@@ -44,34 +52,12 @@ const styles = StyleSheet.create({
         width: dimensions.fullWidth
     },
 
-    textinput_focused: {
-        backgroundColor:'white',
-        fontSize: fonts.lg,
-        paddingHorizontal:padding.sm,
-        borderWidth: 1,
-        borderRadius: 15,
-        borderColor: 'black',
-        width: dimensions.fullWidth / 2
-    },
-
-    textinput_unfocused: {
-        backgroundColor:'white',
-        fontSize: fonts.lg,
-        paddingHorizontal:padding.sm,
-        borderWidth: 1,
-        borderRadius: 15,
-        borderColor: 'black',
+    textinput: {
         width: dimensions.fullWidth / 2
     },
     
     btn: {
-        backgroundColor:'white',
-        fontSize: fonts.lg,
-        paddingHorizontal:padding.sm,
-        marginLeft: margin.sm,
-        justifyContent: 'center',
-        borderWidth: 1,
-        borderRadius: 15,
-        borderColor: 'black',
+        backgroundColor:colors.primary,
+        marginLeft: margin.sm
     }
   });
