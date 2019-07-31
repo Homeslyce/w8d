@@ -6,13 +6,6 @@ import {DataTable} from 'react-native-paper';
 export default class DiceResult extends Component {
     constructor(props) {
     super(props);
-    this.state = {  onePlus : 0,
-                    twoPlus: 0,
-                    threePlus: 0,
-                    fourPlus: 0,
-                    fivePlus: 0,
-                    sixPlus: 0
-                 };
 }
 
     render() {
@@ -26,15 +19,15 @@ export default class DiceResult extends Component {
 
                     <DataTable.Row>
                         <DataTable.Cell>1+</DataTable.Cell>
-                        <DataTable.Cell>{this.state.onePlus}</DataTable.Cell>
+                        <DataTable.Cell>{this.props.onePlus}</DataTable.Cell>
                     </DataTable.Row>
                     <DataTable.Row>
                         <DataTable.Cell>2+</DataTable.Cell>
-                        <DataTable.Cell>{this.state.twoPlus}</DataTable.Cell>
+                        <DataTable.Cell>{this.props.twoPlus}</DataTable.Cell>
                     </DataTable.Row>
                     <DataTable.Row>
                         <DataTable.Cell>3+</DataTable.Cell>
-                        <DataTable.Cell>{this.state.threePlus}</DataTable.Cell>
+                        <DataTable.Cell>{this.props.threePlus}</DataTable.Cell>
                     </DataTable.Row>
                 </DataTable>
 
@@ -46,15 +39,15 @@ export default class DiceResult extends Component {
 
                     <DataTable.Row>
                         <DataTable.Cell>4+</DataTable.Cell>
-                        <DataTable.Cell>{this.state.fourPlus}</DataTable.Cell>
+                        <DataTable.Cell>{this.props.fourPlus}</DataTable.Cell>
                     </DataTable.Row>
                     <DataTable.Row>
                         <DataTable.Cell>5+</DataTable.Cell>
-                        <DataTable.Cell>{this.state.fivePlus}</DataTable.Cell>
+                        <DataTable.Cell>{this.props.fivePlus}</DataTable.Cell>
                     </DataTable.Row>
                     <DataTable.Row>
                         <DataTable.Cell>6+</DataTable.Cell>
-                        <DataTable.Cell>{this.state.sixPlus}</DataTable.Cell>
+                        <DataTable.Cell>{this.props.sixPlus}</DataTable.Cell>
                     </DataTable.Row>
                 </DataTable>
             </View>

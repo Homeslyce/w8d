@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, View, StyleSheet} from 'react-native';
+import { Image, View, StyleSheet, Text} from 'react-native';
 import {colors, fonts, padding, dimensions} from '../Styles/base';
 import { Checkbox } from 'react-native-paper';
 
@@ -19,6 +19,7 @@ export default class DiceCheckbox extends Component {
                     source={this.props.pic}
                     style={styles.image}
                 />
+                <Text>{this.props.qtyDice}</Text>
                 <Checkbox
                     status={checked ? 'checked' : 'unchecked'}
                     onPress={() => { this.setState({ checked: !checked }); }}
