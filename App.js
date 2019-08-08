@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, ImageBackground, View, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import MainRoller from './Components/MainRoller';
 import { Provider as PaperProvider } from 'react-native-paper';
-import {dimensions} from './Styles/base';
+import { dimensions } from './Styles/base';
 import imgBackground from './assets/paperBackgroud.png'
 
 export default function App() {

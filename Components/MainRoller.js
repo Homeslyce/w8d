@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, StyleSheet, View, Keyboard } from 'react-native';
+import { StyleSheet, View, Keyboard } from 'react-native';
 import { colors, padding, dimensions, margin } from '../Styles/base';
 import { Button, TextInput } from 'react-native-paper';
 import { RollAllDice }  from '../Object/DiceTable';
@@ -27,8 +27,6 @@ export default class MainRoller extends Component {
     }
 
     RollDice() {
-
-
         var diceTable = RollAllDice(this.state.qtyDice);
         this.setState({ d1: diceTable.d1, 
                         d2: diceTable.d2,
@@ -46,11 +44,6 @@ export default class MainRoller extends Component {
         Keyboard.dismiss();
     }
 
-    RerollDice() {
-        Alert.alert('You rerolled the dice');
-        Keyboard.dismiss();
-    }
-
     render() {
         return (
             <View style={styles.mainContainer}>
@@ -63,7 +56,7 @@ export default class MainRoller extends Component {
                         style={styles.textinput}
                         theme={{ colors: { primary: colors.primary}}} //change the focus border color
                         underlineColor="transparent"
-                        maxLength={9}
+                        maxLength={6}
                         keyboardType="numeric"
                     />
                     
@@ -73,14 +66,6 @@ export default class MainRoller extends Component {
                         style={styles.btnRoll}
                     >
                         ROLL'EM
-                    </Button>
-
-                    <Button 
-                        mode="contained" 
-                        onPress={this.RerollDice}
-                        style={styles.btnReroll}
-                    >
-                        REROLL
                     </Button>
                 </View>
 
@@ -128,12 +113,6 @@ const styles = StyleSheet.create({
     
     btnRoll: {
         backgroundColor:colors.primary,
-        marginLeft: margin.sm,
-        justifyContent: 'center'
-    },
-
-    btnReroll: {
-        backgroundColor:colors.secondary,
         marginLeft: margin.sm,
         justifyContent: 'center'
     }
