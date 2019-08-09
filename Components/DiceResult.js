@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Alert, Keyboard } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
+import { RndDiceRoll }  from '../Object/DiceTable';
 import { Button } from 'react-native-paper';
 import { colors, dimensions, margin } from '../Styles/base';
 import DiceCheckbox from './DiceCheckbox';
@@ -24,29 +25,48 @@ export default class DiceResult extends Component {
     }
 
     RerollDice() {
-        var strTest = 'The following dice are checked: ';
+        //Set variables
+        const {d1Result, d2Result, d3Result, d4Result, d5Result, d6Result} = this.props;
+        const {d1Checked, d2Checked, d3Checked, d4Checked, d5Checked, d6Checked} = this.state;
 
-        if (this.state.d1Checked)
-            strTest += 'd1 (' + this.props.d1Result + ') ';
-        
-        if (this.state.d2Checked)
-        strTest += 'd2 (' + this.props.d2Result + ') ';
+        let diceResult = [d1Result, d2Result, d3Result, d4Result, d5Result, d6Result];
+        let diceChecked = [d1Checked, d2Checked, d3Checked, d4Checked, d5Checked, d6Checked];
 
-        if (this.state.d3Checked)
-        strTest += 'd3 (' + this.props.d3Result + ') ';
+        let qtyDiceToReroll = 0;
+        let oneOrMoreCbChecked = false;
 
-        if (this.state.d4Checked)
-        strTest += 'd4 (' + this.props.d4Result + ') ';
+        //Validate if the user checked at least 1 dice to reroll
+        for (let dice = 0; dice < diceChecked.length; dice++) {
+            if(diceChecked[dice]) {
+                oneOrMoreCbChecked = true;
+            }
+        }
 
-        if (this.state.d5Checked)
-        strTest += 'd5 (' + this.props.d5Result + ') ';
+        if (oneOrMoreCbChecked) {
+            //Set the checked dice to 0
+            for (let dice = 0; dice < diceResult.length; dice++) {
+                if(diceChecked[dice]) {
+                    qtyDiceToReroll += diceResult[dice];
+                    diceResult[dice] = 0;
+                }
+            }
+            
+            //Reroll the qty of dice removed from the checked dice
+            let diceTable = RndDiceRoll(qtyDiceToReroll);
 
-        if (this.state.d6Checked)
-        strTest += 'd6 (' + this.props.d6Result + ') ';
+            //Add the reroll results to the modified results with 0s where the checkbox was checked
+            diceTable.d1 += diceResult[0];
+            diceTable.d2 += diceResult[1];
+            diceTable.d3 += diceResult[2];
+            diceTable.d4 += diceResult[3];
+            diceTable.d5 += diceResult[4];
+            diceTable.d6 += diceResult[5];
 
-        Alert.alert(strTest);
+            this.props.onReroll(diceTable);
+        }
+        else
+            Alert.alert("You must check at least 1 type of dice before rerolling");
 
-        Keyboard.dismiss();
     }
 
     //Function passed to the child element DiceCheckbox that returns the state of the checkbox
@@ -70,7 +90,7 @@ export default class DiceResult extends Component {
             case 'd6':
                 this.setState({d6Checked: checked});
                 break;  
-        }
+        }  
     }
 
     render() {
@@ -81,6 +101,7 @@ export default class DiceResult extends Component {
                     <DiceCheckbox pic={imgD2} qtyDice={this.props.d2Result} onPress={(checked) => this.HandleCbPress(checked, 'd2')}/>
                     <DiceCheckbox pic={imgD3} qtyDice={this.props.d3Result} onPress={(checked) => this.HandleCbPress(checked, 'd3')}/>
                 </View>
+                
                 <View style={styles.subContainer}>
                     <DiceCheckbox pic={imgD4} qtyDice={this.props.d4Result} onPress={(checked) => this.HandleCbPress(checked, 'd4')}/>
                     <DiceCheckbox pic={imgD5} qtyDice={this.props.d5Result} onPress={(checked) => this.HandleCbPress(checked, 'd5')}/>

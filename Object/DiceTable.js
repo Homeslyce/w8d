@@ -9,12 +9,12 @@ function DiceTable () {
 }
 
 //Define diceTable functions
-export const RollAllDice = (qtyDice) => {
+export const RndDiceRoll = (qtyDice) => {
 
-   var diceTable = new DiceTable();
+   const diceTable = new DiceTable();
 
-   for (var i = 0; i < qtyDice; i++) {
-      var rndValue = Math.floor(Math.random() * (6)) + 1;
+   for (let i = 0; i < qtyDice; i++) {
+      const rndValue = Math.floor(Math.random() * (6)) + 1;
 
       switch (rndValue) {
          case 1: 
