@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Warhammer 8th ed Dice",
-    "slug": "w8d",
+    "name": "Warhammer Dice",
+    "slug": "wd",
     "privacy": "public",
     "sdkVersion": "33.0.0",
     "platforms": [

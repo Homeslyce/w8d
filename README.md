@@ -1,8 +1,8 @@
 # w8d
-Warhammer 8th ed. Dice
+Warhammer Dice
 
 The main goal of this application is to roll any number of dice between 1 and 999 999 and split the results between 1s,2s,3s,4s,5s and 6s. 
-The application offers the possibility to reroll any category of result and also provide the basic statistics commonly used in Warhammer 40k 8th ed.
+The application offers the possibility to reroll any category of result and also provide the basic statistics commonly used in Warhammer 40k.
 
 This is a mobile application developped in React Native. 
 
