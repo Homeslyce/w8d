@@ -5,11 +5,11 @@ import { DataTable } from 'react-native-paper';
 
 export default class DiceResult extends Component {
     constructor(props) {
-    super(props);
-}
+        super(props);
+    }
 
     render() {
-        return(
+        return (
             <View style={styles.container}>
                 <DataTable style={styles.dataTable}>
                     <DataTable.Header>
@@ -61,9 +61,9 @@ const styles = StyleSheet.create({
     },
 
     dataTable: {
-        backgroundColor:'white',
+        backgroundColor: 'white',
         marginLeft: margin.sm,
         borderRadius: 8,
         width: dimensions.fullWidth / 2.2
     }
-  });
+});

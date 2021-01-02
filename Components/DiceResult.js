@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Alert } from 'react-native';
-import { RndDiceRoll }  from '../Object/DiceTable';
+import { RndDiceRoll } from '../Object/DiceTable';
 import { Button } from 'react-native-paper';
 import { colors, dimensions, margin } from '../Styles/base';
 import DiceCheckbox from './DiceCheckbox';
@@ -26,8 +26,8 @@ export default class DiceResult extends Component {
 
     RerollDice() {
         //Set variables
-        const {d1Result, d2Result, d3Result, d4Result, d5Result, d6Result} = this.props;
-        const {d1Checked, d2Checked, d3Checked, d4Checked, d5Checked, d6Checked} = this.state;
+        const { d1Result, d2Result, d3Result, d4Result, d5Result, d6Result } = this.props;
+        const { d1Checked, d2Checked, d3Checked, d4Checked, d5Checked, d6Checked } = this.state;
 
         let diceResult = [d1Result, d2Result, d3Result, d4Result, d5Result, d6Result];
         let diceChecked = [d1Checked, d2Checked, d3Checked, d4Checked, d5Checked, d6Checked];
@@ -37,7 +37,7 @@ export default class DiceResult extends Component {
 
         //Validate if the user checked at least 1 dice to reroll
         for (let dice = 0; dice < diceChecked.length; dice++) {
-            if(diceChecked[dice]) {
+            if (diceChecked[dice]) {
                 oneOrMoreCbChecked = true;
             }
         }
@@ -45,12 +45,12 @@ export default class DiceResult extends Component {
         if (oneOrMoreCbChecked) {
             //Set the checked dice to 0
             for (let dice = 0; dice < diceResult.length; dice++) {
-                if(diceChecked[dice]) {
+                if (diceChecked[dice]) {
                     qtyDiceToReroll += diceResult[dice];
                     diceResult[dice] = 0;
                 }
             }
-            
+
             //Reroll the qty of dice removed from the checked dice
             let diceTable = RndDiceRoll(qtyDiceToReroll);
 
@@ -73,47 +73,47 @@ export default class DiceResult extends Component {
     HandleCbPress(checked, diceCategory) {
         switch (diceCategory) {
             case 'd1':
-                this.setState({d1Checked: checked});
+                this.setState({ d1Checked: checked });
                 break;
             case 'd2':
-                this.setState({d2Checked: checked});
+                this.setState({ d2Checked: checked });
                 break;
             case 'd3':
-                this.setState({d3Checked: checked});
+                this.setState({ d3Checked: checked });
                 break;
             case 'd4':
-                this.setState({d4Checked: checked});
+                this.setState({ d4Checked: checked });
                 break;
             case 'd5':
-                this.setState({d5Checked: checked});
+                this.setState({ d5Checked: checked });
                 break;
             case 'd6':
-                this.setState({d6Checked: checked});
-                break;  
-        }  
+                this.setState({ d6Checked: checked });
+                break;
+        }
     }
 
     render() {
-        return(
+        return (
             <View style={styles.container}>
                 <View style={styles.subContainer}>
-                    <DiceCheckbox pic={imgD1} qtyDice={this.props.d1Result} onPress={(checked) => this.HandleCbPress(checked, 'd1')}/>
-                    <DiceCheckbox pic={imgD2} qtyDice={this.props.d2Result} onPress={(checked) => this.HandleCbPress(checked, 'd2')}/>
-                    <DiceCheckbox pic={imgD3} qtyDice={this.props.d3Result} onPress={(checked) => this.HandleCbPress(checked, 'd3')}/>
-                </View>
-                
-                <View style={styles.subContainer}>
-                    <DiceCheckbox pic={imgD4} qtyDice={this.props.d4Result} onPress={(checked) => this.HandleCbPress(checked, 'd4')}/>
-                    <DiceCheckbox pic={imgD5} qtyDice={this.props.d5Result} onPress={(checked) => this.HandleCbPress(checked, 'd5')}/>
-                    <DiceCheckbox pic={imgD6} qtyDice={this.props.d6Result} onPress={(checked) => this.HandleCbPress(checked, 'd6')}/>
+                    <DiceCheckbox pic={imgD1} qtyDice={this.props.d1Result} onPress={(checked) => this.HandleCbPress(checked, 'd1')} />
+                    <DiceCheckbox pic={imgD2} qtyDice={this.props.d2Result} onPress={(checked) => this.HandleCbPress(checked, 'd2')} />
+                    <DiceCheckbox pic={imgD3} qtyDice={this.props.d3Result} onPress={(checked) => this.HandleCbPress(checked, 'd3')} />
                 </View>
 
-                <Button 
-                        mode="contained" 
-                        onPress={this.RerollDice.bind(this)}
-                        style={styles.btnReroll}
-                    >
-                        REROLL
+                <View style={styles.subContainer}>
+                    <DiceCheckbox pic={imgD4} qtyDice={this.props.d4Result} onPress={(checked) => this.HandleCbPress(checked, 'd4')} />
+                    <DiceCheckbox pic={imgD5} qtyDice={this.props.d5Result} onPress={(checked) => this.HandleCbPress(checked, 'd5')} />
+                    <DiceCheckbox pic={imgD6} qtyDice={this.props.d6Result} onPress={(checked) => this.HandleCbPress(checked, 'd6')} />
+                </View>
+
+                <Button
+                    mode="contained"
+                    onPress={this.RerollDice.bind(this)}
+                    style={styles.btnReroll}
+                >
+                    REROLL
                 </Button>
             </View>
         );
@@ -134,8 +134,8 @@ const styles = StyleSheet.create({
 
     btnReroll: {
         marginTop: margin.sm,
-        backgroundColor:colors.secondary,
+        backgroundColor: colors.secondary,
         width: dimensions.fullWidth / 2,
         alignSelf: 'center'
     }
-  });
+});

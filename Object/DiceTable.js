@@ -1,5 +1,5 @@
 //Define diceTable object
-function DiceTable () {
+function DiceTable() {
    this.d1 = 0;
    this.d2 = 0;
    this.d3 = 0;
@@ -17,7 +17,7 @@ export const RndDiceRoll = (qtyDice) => {
       const rndValue = Math.floor(Math.random() * (6)) + 1;
 
       switch (rndValue) {
-         case 1: 
+         case 1:
             diceTable.d1 += 1;
             break;
          case 2:

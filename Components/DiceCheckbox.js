@@ -17,17 +17,17 @@ export default class DiceCheckbox extends Component {
     }
 
     render() {
-        return(
-            <View style = {styles.container}>
-                <Image 
+        return (
+            <View style={styles.container}>
+                <Image
                     source={this.props.pic}
                     style={styles.image}
                 />
-                <Text style= {styles.text}>{this.props.qtyDice}</Text>
+                <Text style={styles.text}>{this.props.qtyDice}</Text>
                 <Checkbox
                     status={this.state.checked ? 'checked' : 'unchecked'}
                     onPress={this.CbPress.bind(this)}
-                    color= {colors.primary}
+                    color={colors.primary}
                 />
             </View>
         );
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         width: 60,
     },
 
-    text : {
+    text: {
         fontSize: fonts.md
     }
-  });
+});
