@@ -1,4 +1,4 @@
-# w8d
+# wd
 Warhammer Dice
 
 The main goal of this application is to roll any number of dice between 1 and 999 999 and split the results between 1s,2s,3s,4s,5s and 6s. 
