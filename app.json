@@ -27,7 +27,9 @@
     },
     "android": {
       "package": "com.xamarin.WH_Dices",
-      "versionCode": 2
+      "versionCode": 4,
+      "permissions": [],
+      "enableDangerousExperimentalLeanBuilds": true
     }
   }
 }

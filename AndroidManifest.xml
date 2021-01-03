@@ -1,3 +1,0 @@
-<manifest xmlns:tools="http://schemas.android.com/tools">
-  <uses-permission tools:node="remove" android:name="android.permission.CAMERA" />
-</manifest>
