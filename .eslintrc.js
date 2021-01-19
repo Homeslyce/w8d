@@ -1,16 +1,16 @@
 module.exports = {
-    'extends': 'airbnb',
-    'parser': 'babel-eslint',
-    'env': {
-      'jest': true,
+    env: {
+        browser: true,
+        es2021: true,
     },
-    'rules': {
-      'no-use-before-define': 'off',
-      'react/jsx-filename-extension': 'off',
-      'react/prop-types': 'off',
-      'comma-dangle': 'off'
+    extends: ["eslint:recommended", "plugin:react/recommended"],
+    parserOptions: {
+        ecmaFeatures: {
+            jsx: true,
+        },
+        ecmaVersion: 12,
+        sourceType: "module",
     },
-    'globals': {
-      "fetch": false
-    }
-  }
+    plugins: ["react"],
+    rules: {},
+};

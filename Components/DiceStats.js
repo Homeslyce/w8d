@@ -1,69 +1,63 @@
-import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { margin, dimensions } from '../Styles/base';
-import { DataTable } from 'react-native-paper';
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import { margin, dimensions } from "../Styles/base";
+import { DataTable } from "react-native-paper";
 
-export default class DiceResult extends Component {
-    constructor(props) {
-        super(props);
-    }
+export default function DiceResult({ onePlus, twoPlus, threePlus, fourPlus, fivePlus, sixPlus }) {
+    return (
+        <View style={styles.container}>
+            <DataTable style={styles.dataTable}>
+                <DataTable.Header>
+                    <DataTable.Title>Statistic</DataTable.Title>
+                    <DataTable.Title numeric>Quantity</DataTable.Title>
+                </DataTable.Header>
 
-    render() {
-        return (
-            <View style={styles.container}>
-                <DataTable style={styles.dataTable}>
-                    <DataTable.Header>
-                        <DataTable.Title>Statistic</DataTable.Title>
-                        <DataTable.Title numeric>Quantity</DataTable.Title>
-                    </DataTable.Header>
+                <DataTable.Row>
+                    <DataTable.Cell>1+</DataTable.Cell>
+                    <DataTable.Cell numeric>{onePlus}</DataTable.Cell>
+                </DataTable.Row>
+                <DataTable.Row>
+                    <DataTable.Cell>2+</DataTable.Cell>
+                    <DataTable.Cell numeric>{twoPlus}</DataTable.Cell>
+                </DataTable.Row>
+                <DataTable.Row>
+                    <DataTable.Cell>3+</DataTable.Cell>
+                    <DataTable.Cell numeric>{threePlus}</DataTable.Cell>
+                </DataTable.Row>
+            </DataTable>
 
-                    <DataTable.Row>
-                        <DataTable.Cell>1+</DataTable.Cell>
-                        <DataTable.Cell numeric>{this.props.onePlus}</DataTable.Cell>
-                    </DataTable.Row>
-                    <DataTable.Row>
-                        <DataTable.Cell>2+</DataTable.Cell>
-                        <DataTable.Cell numeric>{this.props.twoPlus}</DataTable.Cell>
-                    </DataTable.Row>
-                    <DataTable.Row>
-                        <DataTable.Cell>3+</DataTable.Cell>
-                        <DataTable.Cell numeric>{this.props.threePlus}</DataTable.Cell>
-                    </DataTable.Row>
-                </DataTable>
+            <DataTable style={styles.dataTable}>
+                <DataTable.Header>
+                    <DataTable.Title>Statistic</DataTable.Title>
+                    <DataTable.Title numeric>Quantity</DataTable.Title>
+                </DataTable.Header>
 
-                <DataTable style={styles.dataTable}>
-                    <DataTable.Header>
-                        <DataTable.Title>Statistic</DataTable.Title>
-                        <DataTable.Title numeric>Quantity</DataTable.Title>
-                    </DataTable.Header>
-
-                    <DataTable.Row>
-                        <DataTable.Cell>4+</DataTable.Cell>
-                        <DataTable.Cell numeric>{this.props.fourPlus}</DataTable.Cell>
-                    </DataTable.Row>
-                    <DataTable.Row>
-                        <DataTable.Cell>5+</DataTable.Cell>
-                        <DataTable.Cell numeric>{this.props.fivePlus}</DataTable.Cell>
-                    </DataTable.Row>
-                    <DataTable.Row>
-                        <DataTable.Cell>6+</DataTable.Cell>
-                        <DataTable.Cell numeric>{this.props.sixPlus}</DataTable.Cell>
-                    </DataTable.Row>
-                </DataTable>
-            </View>
-        );
-    }
+                <DataTable.Row>
+                    <DataTable.Cell>4+</DataTable.Cell>
+                    <DataTable.Cell numeric>{fourPlus}</DataTable.Cell>
+                </DataTable.Row>
+                <DataTable.Row>
+                    <DataTable.Cell>5+</DataTable.Cell>
+                    <DataTable.Cell numeric>{fivePlus}</DataTable.Cell>
+                </DataTable.Row>
+                <DataTable.Row>
+                    <DataTable.Cell>6+</DataTable.Cell>
+                    <DataTable.Cell numeric>{sixPlus}</DataTable.Cell>
+                </DataTable.Row>
+            </DataTable>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row',
+        flexDirection: "row",
     },
 
     dataTable: {
-        backgroundColor: 'white',
+        backgroundColor: "white",
         marginLeft: margin.sm,
         borderRadius: 8,
-        width: dimensions.fullWidth / 2.2
-    }
+        width: dimensions.fullWidth / 2.2,
+    },
 });
